@@ -17,6 +17,12 @@ namespace AutoBark
         {
             try
             {
+                var procMutex = new System.Threading.Mutex(true, "_RUNAUTOBARK4WINDOW_MUTEX", out var result);
+                if (!result)
+                {
+                    Application.Exit();
+                    return;
+                }
                 Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
                 Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
                 AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
