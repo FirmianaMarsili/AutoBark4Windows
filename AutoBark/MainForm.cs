@@ -160,7 +160,7 @@ namespace AutoBark
         private void HttpSendBarkMsgThread(object obj)
         {
             try
-            {
+            {                
                 HttpWebRequest request;
                 request = (HttpWebRequest)WebRequest.Create(obj.ToString());
                 request.Method = "POST";
