@@ -171,8 +171,8 @@ namespace AutoBark
                 String body = this.clipContentCheckBox.Checked ? clipboardText : this.contentTextBox.Text;
                 StringBuilder builder = new StringBuilder();
                 builder.AppendFormat("title={0}", title);
-                builder.AppendFormat("&body={0}", body);
-                builder.AppendFormat("&copy={0}", body);
+                builder.AppendFormat("&body={0}", Uri.EscapeDataString(body));
+                builder.AppendFormat("&copy={0}", Uri.EscapeDataString(body));
                 builder.AppendFormat("&automaticallyCopy={0}", this.autoCopyCheckBox.Checked ? "1" : "0");
 
                 byte[] data = Encoding.UTF8.GetBytes(builder.ToString());
